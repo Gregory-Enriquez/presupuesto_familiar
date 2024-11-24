@@ -39,20 +39,20 @@ const findController = async (req, res) => {
 };
 
 /**
- * Crear un ingrediente
+ * Crear un ingreso
  */
 
 const createController = async (req, res) => {
     try {
         const resultado = await queryCreate(req.body);
-        res.json({mensaje: "Ingrediente creada con exito", id: resultado.insertId });
+        res.json({mensaje: "Ingreso creado con exito", id: resultado.insertId });
     } catch (error){
         res.status(500).send(error);
     }
 };
 
 /**
- * Actualizar los datos de una Ingrediente
+ * Actualizar los datos de una 
  */
 
 const updateController = async (req, res) =>{
@@ -62,7 +62,7 @@ const updateController = async (req, res) =>{
         if (resultado.affectedRows > 0) {
             res.json({ mensaje: "ingresos actualizado con exito", ingresos: resultado});
         } else {
-            res.status(404).json({mensaje: "ingrediente no encontrado"});
+            res.status(404).json({mensaje: "ingreso no encontrado"});
         }
     } catch (error){
         res.status(500).send(error);
@@ -70,7 +70,7 @@ const updateController = async (req, res) =>{
 };
   
 /**
- * Eliminar una ingrediente
+ * 
  */
 
 const deleteController = async (req, res) => {
@@ -78,12 +78,12 @@ const deleteController = async (req, res) => {
         
         const resultado = await queryDelete(req.params.id);
         if (resultado.affectedRows > 0){
-            res.json({ mensaje: "ingrediente eliminado con exito"});
+            res.json({ mensaje: "ingreso eliminado con exito"});
         } else {
-            res.status(404).json({mensaje: "ingrediente no encontrado"});
+            res.status(404).json({mensaje: "ingreso no encontrado"});
         } 
     } catch (error){
-        res.status(500).json({ mensaje: "Error al eliminar el ingrediente", error: error.message});
+        res.status(500).json({ mensaje: "Error al eliminar el ingreso", error: error.message});
     }
 };
 
